@@ -78,7 +78,7 @@ local redzlib = {
   Options = {},
   Flags = {},
   Tabs = {},
-  Icons = loadstring(game:HttpGet("https://raw.githubusercontent.com/m1M-Plqer819/synx/main/rzsul/icon"))()
+  Icons = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Icons.Lua"))()
 }
 
 local ViewportSize = workspace.CurrentCamera.ViewportSize
@@ -1082,9 +1082,6 @@ function redzlib:MakeWindow(Configs)
       }), "Text")
       
       local Section = {}
-      function Section:SetSt(Val)
-        SectionName = Val
-      end
       table.insert(redzlib.Options, {type = "Section", Name = SectionName, func = Section})
       function Section:Visible(Bool)
         if Bool == nil then SectionFrame.Visible = not SectionFrame.Visible return end
