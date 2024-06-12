@@ -158,9 +158,16 @@ local ScreenGui = Create("ScreenGui", CoreGui, {
   })
 })
 
+local a = Instance.new("ScreenGui")
+local b = Instance.new("ImageButton")
+local e = Instance.new("UICorner")
+local c = Instance.new("TextButton")
+local f = Instance.new("UICorner")
+a.Name = "MMM"
 local ScreenFind = CoreGui:FindFirstChild(ScreenGui.Name)
 if ScreenFind and ScreenFind ~= ScreenGui then
   ScreenFind:Destroy()
+  CoreGui:FindFirstChild(a.Name):Destroy()
 end
 
 local function ConnectSave(Instance, func)
@@ -755,6 +762,8 @@ function redzlib:MakeWindow(Configs)
     MinimizeButton
   })
   
+
+
   local Minimized, SaveSize, WaitClick
   local Window, FirstTab = {}, false
   function Window:CloseBtn()
@@ -764,11 +773,50 @@ function redzlib:MakeWindow(Configs)
       Options = {
         {"Confirm", function()
           ScreenGui:Destroy()
+          a:Destroy()
         end},
         {"Cancel"}
       }
     })
   end
+
+  function Window:ToggleUIButton()
+    a.Parent = game.CoreGui
+    b.Name = "b"
+    b.Parent = a
+    b.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+    b.BackgroundTransparency = 0.200
+    b.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    b.BorderSizePixel = 0
+    b.Position = UDim2.new(0.123000003, 0, 0.184, 0)
+    b.Size = UDim2.new(0, 50, 0, 50)
+    b.Image = ""
+    b.Draggable = true
+    b.Active = true
+    b.Selectable = true
+    b.MouseButton1Click:Connect(function()
+    Window:Minimize()
+    end)
+    e.Name = "e"
+    e.Parent = b
+    c.Name = "c"
+    c.Parent = b
+    c.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    c.BackgroundTransparency = 1.000
+    c.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    c.BorderSizePixel = 0
+    c.Position = UDim2.new(0.5, 0, 0.5, 0)
+    c.Font = Enum.Font.SourceSans
+    c.Text = "UI"
+    c.TextColor3 = Color3.fromRGB(0, 0, 0)
+    c.TextSize = 20.000
+    c.MouseButton1Click:Connect(function()
+    Window:Minimize()
+    end)
+    f.Name = "f"
+    f.Parent = c
+  end
+
   function Window:MinimizeBtn()
     if WaitClick then return end
     WaitClick = true
