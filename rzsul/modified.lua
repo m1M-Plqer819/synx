@@ -164,10 +164,9 @@ local e = Instance.new("UICorner")
 local c = Instance.new("TextButton")
 local f = Instance.new("UICorner")
 a.Name = "MMM"
-local ScreenFind = CoreGui:FindFirstChild(ScreenGui.Name)
-if ScreenFind and ScreenFind ~= ScreenGui then
-  ScreenFind:Destroy()
-  CoreGui:FindFirstChild(a.Name):Destroy()
+if CoreGui:FindFirstChild("MBM HUB") or CoreGui:FindFirstChild("MMM") then
+  CoreGui:FindFirstChild("MBM HUB"):Destroy()
+  CoreGui:FindFirstChild("MMM"):Destroy()
 end
 
 local function ConnectSave(Instance, func)
